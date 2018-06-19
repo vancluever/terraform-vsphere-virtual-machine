@@ -58,6 +58,10 @@ variable "dns_servers" {
   type = "list"
 }
 
+variable "memory" {
+  type = "string"
+}
+
 variable "template_os_family" {
   default = "windows"
 }
@@ -73,6 +77,7 @@ module "virtual_machines" {
   ipv4_gateway         = "${var.ipv4_gateway}"
   ipv4_network_address = "${var.ipv4_network_address}"
   linked_clone         = "${var.linked_clone}"
+  memory               = "${var.memory}"
   network              = "${var.network}"
   resource_pool        = "${var.resource_pool}"
   template_name        = "${var.template_name}"
@@ -80,4 +85,16 @@ module "virtual_machines" {
   vm_count             = "${var.vm_count}"
   vm_name_prefix       = "${var.vm_name_prefix}"
   workgroup            = "${var.workgroup}"
+}
+
+output "virtual_machine_names" {
+  value = "${module.virtual_machines.virtual_machine_names}"
+}
+
+output "virtual_machine_ids" {
+  value = "${module.virtual_machines.virtual_machine_ids}"
+}
+
+output "virtual_machine_default_ips" {
+  value = "${module.virtual_machines.virtual_machine_default_ips}"
 }

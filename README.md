@@ -69,3 +69,11 @@ Usage Example:
 | wait_for_guest_net_timeout | The timeout, in mintues, to wait for the guest network when creating virtual machines. On virtual machines created from scratch, you may wish to adjust this value to -1, which will disable the waiter. | string | `5` | no |
 | workgroup | The workgroup name for Windows customization. | string | `` | no |
 
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| virtual_machine_default_ips | The default IP address of each virtual machine deployed, indexed by name. |
+| virtual_machine_ids | The ID of each virtual machine deployed, indexed by name. |
+| virtual_machine_names | The names of each virtual machine deployed. |
+

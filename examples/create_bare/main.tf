@@ -51,3 +51,15 @@ module "virtual_machines" {
   vm_name_prefix             = "${var.vm_name_prefix}"
   wait_for_guest_net_timeout = "${var.wait_for_guest_net_timeout}"
 }
+
+output "virtual_machine_names" {
+  value = "${module.virtual_machines.virtual_machine_names}"
+}
+
+output "virtual_machine_ids" {
+  value = "${module.virtual_machines.virtual_machine_ids}"
+}
+
+output "virtual_machine_default_ips" {
+  value = "${module.virtual_machines.virtual_machine_default_ips}"
+}

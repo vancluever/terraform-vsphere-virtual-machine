@@ -71,3 +71,15 @@ module "virtual_machines" {
   vm_count             = "${var.vm_count}"
   vm_name_prefix       = "${var.vm_name_prefix}"
 }
+
+output "virtual_machine_names" {
+  value = "${module.virtual_machines.virtual_machine_names}"
+}
+
+output "virtual_machine_ids" {
+  value = "${module.virtual_machines.virtual_machine_ids}"
+}
+
+output "virtual_machine_default_ips" {
+  value = "${module.virtual_machines.virtual_machine_default_ips}"
+}
