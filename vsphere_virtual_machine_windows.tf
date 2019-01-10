@@ -1,6 +1,6 @@
 resource "vsphere_virtual_machine" "virtual_machine_windows" {
   count            = "${var.template_os_family == "windows" ? var.vm_count : 0}"
-  name             = "${var.vm_name_prefix}${count.index}"
+  name             = "${var.vm_name_prefix}-${var.vm_count == 1 ? "" : "${count.index}"}"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   datastore_id     = "${data.vsphere_datastore.ds.id}"
 
@@ -27,7 +27,7 @@ resource "vsphere_virtual_machine" "virtual_machine_windows" {
 
     customize {
       windows_options {
-        computer_name  = "${var.vm_name_prefix}${count.index}"
+        computer_name  = "${var.vm_name_prefix}-${var.vm_count == 1 ? "" : "${count.index}"}"
         admin_password = "${var.admin_password}"
         workgroup      = "${var.workgroup}"
         time_zone      = "${var.time_zone != "" ? var.time_zone : "85"}"
