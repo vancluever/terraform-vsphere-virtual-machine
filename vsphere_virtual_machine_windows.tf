@@ -6,6 +6,7 @@ resource "vsphere_virtual_machine" "virtual_machine_windows" {
 
   num_cpus = "${var.num_cpus}"
   memory   = "${var.memory}"
+  folder   = "${var.folder}"
   guest_id = "${data.vsphere_virtual_machine.template.guest_id}"
 
   wait_for_guest_net_timeout = "${var.wait_for_guest_net_timeout}"

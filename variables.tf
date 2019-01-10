@@ -47,6 +47,10 @@ variable "memory" {
   default     = "1024"
 }
 
+variable "folder" {
+  description = "The path to the folder to put this virtual machine in, relative to the datacenter that the resource pool is in."
+}
+
 variable "disk_size" {
   description = "The amount of disk space to assign to each VM. Leave blank to use the template's disk size (cloned VMs only)."
   default     = ""
