@@ -1,6 +1,6 @@
 resource "vsphere_virtual_machine" "virtual_machine_linux" {
   count            = "${var.template_os_family == "linux" ? var.vm_count : 0}"
-  name             = "${var.vm_name_prefix}${count.index}"
+  name             = "${var.vm_name_prefix}${count.index + 1}"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   datastore_id     = "${data.vsphere_datastore.ds.id}"
 
@@ -27,7 +27,7 @@ resource "vsphere_virtual_machine" "virtual_machine_linux" {
 
     customize {
       linux_options {
-        host_name = "${var.vm_name_prefix}${count.index}"
+        host_name = "${var.vm_name_prefix}${count.index + 1}"
         domain    = "${var.domain_name}"
         time_zone = "${var.time_zone != "" ? var.time_zone : "UTC"}"
       }
