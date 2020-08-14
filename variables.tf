@@ -93,8 +93,9 @@ variable "ipv4_gateway" {
 }
 
 variable "dns_servers" {
+  type = list(string)
   description = "The DNS servers to assign to each virtual machine."
-  default     = []
+  default     = ["8.8.8.8"]
 }
 
 variable "time_zone" {
